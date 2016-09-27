@@ -5,13 +5,16 @@ module MRM
     end
 
     def version_check
-      uri = URI("#{url}/v2/")
-      http = Net::HTTP.new(uri.host, uri.port)
-      http.use_ssl = uri.scheme == 'https'
-      request = Net::HTTP::Get.new(uri.request_uri)
-      request.basic_auth(login, pass)
-      response = http.request(request)
+      response = request("#{url}/v2/")
+      if response.code == '200'
+        JSON.parse(response.body)
+      else
+        raise ResponseError, response.body
+      end
+    end
 
+    def list_repositories
+      response = request("#{url}/v2/_catalog")
       if response.code == '200'
         JSON.parse(response.body)
       else
@@ -21,5 +24,14 @@ module MRM
 
     private
     attr_reader :url, :login, :pass
+
+    def request(url)
+      uri = URI(url)
+      http = Net::HTTP.new(uri.host, uri.port)
+      http.use_ssl = uri.scheme == 'https'
+      request = Net::HTTP::Get.new(uri.request_uri)
+      request.basic_auth(login, pass)
+      http.request(request)
+    end
   end
 end
