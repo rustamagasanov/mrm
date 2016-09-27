@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+require 'mrm'
+require 'optparse'
+require 'ostruct'
+
+options = OpenStruct.new
+client = MRM::Client.new
+
+OptionParser.new do |opts|
+  opts.banner = 'Usage: mrm [options]'
+
+  opts.on('-v', '--version', 'Prints gem version') do |v|
+    options.v = true
+  end
+end.parse!
+
+if options.v
+  puts MRM::Version.to_s
+end
+
+#opts.on('check', 'Checks if Docker Registry is reachable and accessible') do |c|
+#end
+
+if ARGV[0] == 'check'
+  puts client.version_check
+end
+
+p options

@@ -7,7 +7,7 @@ module MRM
     def version_check
       response = request("#{url}/v2/")
       if response.code == '200'
-        JSON.parse(response.body)
+        puts '--> Repository is reachable and accessible.'
       else
         raise ResponseError, response.body
       end

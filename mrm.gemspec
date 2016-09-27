@@ -14,4 +14,5 @@ Gem::Specification.new do |s|
   s.homepage    = 'http://rubygems.org/gems/mrm'
   s.license     = 'MIT'
   s.version     = MRM::Version
+  s.executables << 'mrm'
 end

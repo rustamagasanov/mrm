@@ -7,4 +7,5 @@ require 'yaml'
 require 'mrm/client'
 require 'mrm/api'
 require 'mrm/error'
+require 'mrm/version'
 
