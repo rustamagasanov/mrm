@@ -8,10 +8,6 @@ module MRM
       api.version_check
     end
 
-    def catalog
-      api.catalog
-    end
-
     def list_repositories
       api.list_repositories
     end
