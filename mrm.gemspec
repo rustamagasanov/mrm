@@ -3,7 +3,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'mrm/version'
 
 Gem::Specification.new do |s|
-  s.add_development_dependency 'rspec', '~> 3.2'
+  # s.add_development_dependency 'rspec', '~> 3.2'
   s.name        = 'mrm'
   s.date        = '2015-02-19'
   s.summary     = 'Multipurpose Registry Manager'
