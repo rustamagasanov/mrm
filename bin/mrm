@@ -22,8 +22,12 @@ end
 #opts.on('check', 'Checks if Docker Registry is reachable and accessible') do |c|
 #end
 
-if ARGV[0] == 'check'
-  puts client.version_check
-end
+res = case ARGV[0]
+      when 'check'
+        client.version_check
+      when 'list'
+        client.list_repositories
+      end
 
 p options
+puts res
