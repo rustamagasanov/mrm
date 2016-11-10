@@ -17,17 +17,17 @@ end.parse!
 
 if options.v
   puts MRM::Version.to_s
+  abort
 end
 
 #opts.on('check', 'Checks if Docker Registry is reachable and accessible') do |c|
 #end
 
-res = case ARGV[0]
-      when 'check'
-        client.version_check
-      when 'list'
-        client.list_repositories
-      end
+case ARGV[0]
+when 'check'
+  client.version_check
+when 'list'
+  client.list_repositories
+end
 
 p options
-puts res

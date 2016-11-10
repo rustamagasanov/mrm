@@ -5,11 +5,13 @@ module MRM
     end
 
     def version_check
-      api.version_check
+      puts api.version_check
     end
 
     def list_repositories
-      api.list_repositories
+      api.list_repositories['repositories'].each do |repo|
+        puts repo.brown
+      end
     end
 
     private
