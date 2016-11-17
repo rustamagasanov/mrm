@@ -2,6 +2,12 @@ Multipurpose Registry Manager
 
 ###### Use this tool carefully and check the tag twice before removing it from the registry.
 
+## Installation
+
+```
+gem install mrm
+```
+
 ## Prerequisites
 
 Supply your registry credentials in `config.yml` file.
