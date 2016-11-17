@@ -37,4 +37,6 @@ when 'list'
   else
     client.list_tags(ARGV[1])
   end
+else
+  puts 'Unknown command supplied'
 end
