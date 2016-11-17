@@ -22,6 +22,15 @@ module MRM
       end
     end
 
+    def list_tags(name)
+      response = request("#{url}/v2/#{name}/tags/list")
+      if response.code == '200'
+        JSON.parse(response.body)
+      else
+        raise ResponseError, response.body
+      end
+    end
+
     private
     attr_reader :url, :login, :pass
 

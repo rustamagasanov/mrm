@@ -14,6 +14,12 @@ module MRM
       end
     end
 
+    def list_tags(name)
+      api.list_tags(name)['tags'].each do |tag|
+        puts tag.brown
+      end
+    end
+
     private
     attr_reader :config
 
