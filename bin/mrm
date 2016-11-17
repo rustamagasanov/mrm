@@ -16,8 +16,7 @@ OptionParser.new do |opts|
 
   opts.on('-h', '--help', 'Display this help') do
     puts opts.to_s.split("\n")
-    puts "\n"
-    puts "Commands:"
+    puts "\nCommands:"
     printf("%-3s %-32s %-15s", '', 'list', "Shows the list of repositories\n")
     printf("%-3s %-5s %-26s %-15s", '', 'list', '*repo_name*', "Lists tags of the specific repository\n")
     abort
