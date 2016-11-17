@@ -8,10 +8,19 @@ options = OpenStruct.new
 client = MRM::Client.new
 
 OptionParser.new do |opts|
-  opts.banner = 'Usage: mrm [options]'
+  opts.banner = 'Usage: mrm [options] <command>'
 
   opts.on('-v', '--version', 'Prints gem version') do |v|
     options.v = true
+  end
+
+  opts.on('-h', '--help', 'Display this help') do
+    puts opts.to_s.split("\n")
+    puts "\n"
+    puts "Commands:"
+    printf("%-3s %-32s %-15s", '', 'list', "Shows the list of repositories\n")
+    printf("%-3s %-5s %-26s %-15s", '', 'list', '*repo_name*', "Lists tags of the specific repository\n")
+    abort
   end
 end.parse!
 
@@ -20,14 +29,13 @@ if options.v
   abort
 end
 
-#opts.on('check', 'Checks if Docker Registry is reachable and accessible') do |c|
-#end
-
 case ARGV[0]
 when 'check'
   client.version_check
 when 'list'
-  client.list_repositories
+  if ARGV[1].nil?
+    client.list_repositories
+  else
+    client.list_tags(ARGV[1])
+  end
 end
-
-p options
