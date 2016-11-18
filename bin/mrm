@@ -17,9 +17,15 @@ OptionParser.new do |opts|
   opts.on('-h', '--help', 'Display this help') do
     puts opts.to_s.split("\n")
     puts "\nCommands:"
-    printf("%-3s %-32s %-15s", '', 'check', "Checks registry availability\n")
-    printf("%-3s %-32s %-15s", '', 'list', "Shows the list of repositories\n")
-    printf("%-3s %-5s %-26s %-15s", '', 'list', '*repo_name*', "Lists tags of the specific repository\n")
+    [
+      ['check', '', '', "Checks registry availability\n"],
+      ['list', '', '', "Lists repositories of the registry\n"],
+      ['list', '*repo*', '', "Lists tags of the specific repository\n"],
+      ['get', '*repo*', '*reference*', "Pulls a manifest for the image\n"],
+      ['delete', '*repo*', '*reference*', "Deletes an image from the specific repository\n"]
+    ].each do |args|
+      printf("    %-7s %-7s %-16s %-20s", *args)
+    end
     abort
   end
 end.parse!
@@ -32,6 +38,12 @@ end
 case ARGV[0]
 when 'check'
   client.version_check
+when 'delete'
+  puts 'Wrong number of arguments' if ARGV[1].nil? || ARGV[2].nil?
+  client.delete_image(ARGV[1], ARGV[2])
+when 'get'
+  puts 'Wrong number of arguments' if ARGV[1].nil? || ARGV[2].nil?
+  client.get_manifest(ARGV[1], ARGV[2])
 when 'list'
   if ARGV[1].nil?
     client.list_repositories

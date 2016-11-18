@@ -5,7 +5,11 @@ module MRM
     end
 
     def version_check
-      puts api.version_check
+      puts api.version_check.brown
+    end
+
+    def get_manifest(name, reference)
+      pp api.get_manifest(name, reference)
     end
 
     def list_repositories
@@ -18,6 +22,10 @@ module MRM
       api.list_tags(name)['tags'].each do |tag|
         puts tag.brown
       end
+    end
+
+    def delete_image(name, reference)
+      puts api.delete_image(name, reference)
     end
 
     private
