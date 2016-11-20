@@ -17,7 +17,7 @@ OptionParser.new do |opts|
     puts opts.to_s.split("\n")
     puts "\nCommands:"
     [
-      ['config', '', '', "Saves registry credentials\n"],
+      ['config', '', '', "Saves registry credentials. Required before any other command.\n"],
       ['check', '', '', "Checks registry availability\n"],
       ['list', '', '', "Lists repositories of the registry\n"],
       ['list', '*repo*', '', "Lists tags of the specific repository\n"],
