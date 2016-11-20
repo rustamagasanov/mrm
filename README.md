@@ -10,13 +10,20 @@ gem install mrm
 
 ## Prerequisites
 
-Supply your registry credentials in `config.yml` file.
+Run
+
+```
+mrm config
+```
+
+and supply your registry credentials. The data provided will be then stored in `~/.mrmconfig` file and can be changed anytime by rerunning `mrm config`.
 
 ## Usage
 
 ```
 mrm -h                        # Shows help
 mrm -v                        # Shows version
+mrm config                    # Saves registry credentials
 mrm check                     # Checks if the registry is accessible
 mrm list                      # Lists repositories of the registry
 mrm list *repo*               # Lists tags of the specific repository

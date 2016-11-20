@@ -1,7 +1,7 @@
 module MRM
   class Client
     def initialize
-      @config = YAML.load_file('config.yml')
+      @config = YAML.load_file("#{Dir.home}/.mrmconfig")
     end
 
     def version_check
