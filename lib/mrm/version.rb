@@ -2,7 +2,7 @@ module MRM
   class Version
     MAJOR = 1
     MINOR = 3
-    PATCH = 1
+    PATCH = 2
     PRE = nil
 
     class << self
