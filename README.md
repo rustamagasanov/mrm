@@ -18,7 +18,7 @@ mrm config
 
 and supply your registry credentials. The data provided will be then stored in `~/.mrmconfig` file and can be changed anytime by rerunning `mrm config`.
 
-## Usage
+## CLI
 
 ```
 mrm -h                        # Shows help
@@ -31,3 +31,13 @@ mrm get *repo* *reference*    # Pulls a manifest for the image
 mrm delete *repo* *reference* # Deletes an image from the specific repository
 ```
 
+## Client
+
+```
+client = MRM::Client.new
+client.version_check
+client.get_manifest(name, reference)
+client.list_repositories
+client.list_tags(name)
+client.delete_image(name, reference)
+```
