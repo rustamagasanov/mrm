@@ -50,22 +50,22 @@ when 'config'
   password = STDIN.noecho(&:gets).strip
   MRM::ConfigStorage.new(url, login, password).store!
 when 'check'
-  client = MRM::Client.new
-  client.version_check
+  cli = MRM::CLI.new
+  cli.version_check
 when 'delete'
   puts 'Wrong number of arguments' if ARGV[1].nil? || ARGV[2].nil?
-  client = MRM::Client.new
-  client.delete_image(ARGV[1], ARGV[2])
+  cli = MRM::CLI.new
+  cli.delete_image(ARGV[1], ARGV[2])
 when 'get'
   puts 'Wrong number of arguments' if ARGV[1].nil? || ARGV[2].nil?
-  client = MRM::Client.new
-  client.get_manifest(ARGV[1], ARGV[2])
+  cli = MRM::CLI.new
+  cli.get_manifest(ARGV[1], ARGV[2])
 when 'list'
-  client = MRM::Client.new
+  cli = MRM::CLI.new
   if ARGV[1].nil?
-    client.list_repositories
+    cli.list_repositories
   else
-    client.list_tags(ARGV[1])
+    cli.list_tags(ARGV[1])
   end
 else
   puts 'Unknown command supplied'
